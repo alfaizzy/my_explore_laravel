@@ -10,7 +10,9 @@
 
         @include('layouts.header')
         <div class="content-wrapper">
-          @yield('content')
+          <section class="content">
+            @yield('content')
+          </section>
           </div><!-- /.content-wrapper -->
           @include('layouts.footer')
 
@@ -34,7 +36,7 @@
       <!-- jQuery 2.1.4 -->
       @include('layouts.jquery_footer')
     </body>
-    
+
   @endif
 
 
