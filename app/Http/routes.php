@@ -37,6 +37,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/home', 'HomeController@index');
     Route::get('/', 'HomeController@index');
-    Route::get('/menu1', 'HomeController@page');
+    Route::get('/menu1', 'Menu1Controller@page');
+
+    Route::post('menu1/insert1', array('uses'=>'Menu1Controller@insert1'));
 
 });

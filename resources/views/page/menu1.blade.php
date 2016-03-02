@@ -1,42 +1,42 @@
 @extends('layouts.app')
 
 @section('content')
-
-
               <!-- Horizontal Form -->
               <div class="box box-info">
                 <div class="box-header with-border">
                   <h3 class="box-title">Horizontal Form</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal">
+                <form class="form-horizontal" role="form" method="POST" action="{{ url('/menu1/insert1') }}">
+                  {!! csrf_field() !!}
                   <div class="box-body">
-                    <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                    <div class="form-group{{ $errors->has('nama_coba') ? ' has-error' : '' }}">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Nama Barang</label>
                       <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                        <input type="text" class="form-control" name="nama_coba" placeholder="Nama Barang">
+                        @if (count($errors) > 0)
+                            <span class="help-block">
+                                <strong>{{ $errors->first('nama_coba') }}</strong>
+                            </span>
+                        @endif
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                    <div class="form-group{{ $errors->has('jumlah_coba') ? ' has-error' : '' }}">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Jumlah</label>
                       <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-sm-offset-2 col-sm-10">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox"> Remember me
-                          </label>
-                        </div>
+                        <input type="text" class="form-control" name="jumlah_coba" placeholder="Password">
+                        @if (count($errors) > 0)
+                            <span class="help-block">
+                                <strong>{{ $errors->first('jumlah_coba') }}</strong>
+                            </span>
+                        @endif
                       </div>
                     </div>
                   </div><!-- /.box-body -->
                   <div class="box-footer">
-                    <button type="submit" class="btn btn-default">Cancel</button>
-                    <button type="submit" class="btn btn-info pull-right">Sign in</button>
+
+                    <button type="submit" class="btn btn-primary pull-right">Simpan</button>
                   </div><!-- /.box-footer -->
                 </form>
               </div><!-- /.box -->
-            @endsection
+@endsection

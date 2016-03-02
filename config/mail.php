@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => array('address' => 'donotreply@{DOMAIN}', 'name' => "Do Not Reply"),
 
     /*
     |--------------------------------------------------------------------------

@@ -26,9 +26,4 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
-    public function page()
-    {
-        return view('page.menu1');
-    }
 }

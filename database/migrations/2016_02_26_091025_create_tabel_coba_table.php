@@ -16,6 +16,8 @@ class CreateTabelCobaTable extends Migration
           $table->increments('id_coba');
           $table->string('nama_coba');
           $table->integer('jumlah_coba');
+          $table->timestamp('created_at');
+          $table->timestamp('updated_at');
       });
     }
 
