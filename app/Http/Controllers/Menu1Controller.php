@@ -7,6 +7,7 @@ use Auth;
 use Illuminate\Http\Request;
 
 use App\CobaInsert;
+use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -17,11 +18,14 @@ class Menu1Controller extends Controller
     {
         $this->middleware('auth');
     }
+
     public function page()
     {
       if (Auth::check()) {
         // The user is logged in...
-        return view('page.menu1');
+        $users = DB::table('users')->paginate(2);
+        $tabel_coba = DB::table('tabel_coba')->paginate(2);
+        return view('page.menu1', ['users' => $users, 'tabel_coba' => $tabel_coba]);
       }else{
         return view('page.menu1');
       }
@@ -48,4 +52,42 @@ class Menu1Controller extends Controller
           $data->save();
         }
     }
+
+    public function viewuser1(request $request)
+    {
+        $users = DB::table('users')->get();
+
+        //return redirect('menu1')->withInput($users);
+        //return back()->withInput($users);
+        //return ['iki' => $users];
+        //return view('page.menu1', ['users' => $users]);
+        return response()->json(['users' => $users]);
+    }
+
+    public function viewUser1GET(request $request)
+    {
+        //$users = DB::table('users')->get();
+        /*foreach ($users as $user) {
+            echo $user->name;
+        }*/
+        //return ['iki' => $users];
+        /*DB::table('users')->chunk(2, function($users) {
+            foreach ($users as $user) {
+                //
+                echo $user->name;
+            }
+            return false;
+        });*/
+
+
+
+        $users = DB::table('users')->paginate(2);
+        //return ['users' => $users];
+        return response()->json(['users' => $users]);
+        //return view('user.index', ['users' => $users]);
+
+
+        //return view('menu1', ['users' => $users]);
+    }
+
 }
